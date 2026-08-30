@@ -23,7 +23,8 @@ app.command("/zeratul-help", async ({ ack, respond }) => {
         text:
             `Available Commands:
 /zeratul-ping - Check bot latency
-/zeratul-catfact - Get a cat fact`
+/zeratul-help - Show available commands
+/zeratul-fact - Get a useless fact`
     });
 });
 
@@ -35,6 +36,18 @@ app.command("/zeratul-catfact", async ({ ack, respond }) => {
         await respond({ text: `Cat Fact:\n${response.data.fact}` });
     } catch (err) {
         await respond({ text: "Failed to fetch a cat fact." });
+    }
+});
+
+app.command("/zeratul-fact", async ({ ack, respond }) => {
+    await ack();
+
+    try {
+        const res = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en');
+        const data = await res.json();
+        await respond({ text: `Useless Fact:\n${data.text}` });
+    } catch (err) {
+        await respond({ text: "Failed to fetch a useless fact." });
     }
 });
 
