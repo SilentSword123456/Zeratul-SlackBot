@@ -24,7 +24,10 @@ app.command("/zeratul-help", async ({ ack, respond }) => {
             `Available Commands:
 /zeratul-ping - Check bot latency
 /zeratul-help - Show available commands
-/zeratul-fact - Get a useless fact`
+/zeratul-fact - Get a useless fact
+/zeratul-catfact - Get a cat fact
+/zeratul-joke - Get a joke`
+
     });
 });
 
